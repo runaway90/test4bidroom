@@ -68,7 +68,11 @@ class ClientAPIController extends AbstractController
 
     }
 
-    public function getByEmail(string $email)
+    /**
+     * @param string $email
+     * @return Response
+     */
+    public function getByEmail(string $email): Response
     {
         $repository = $this->getDoctrine()
         ->getRepository(Message::class)
@@ -83,7 +87,11 @@ class ClientAPIController extends AbstractController
         return Response::create($jsonContent, 200);
     }
 
-    public function findOneMessageById(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function findOneMessageById(Request $request): Response
     {
         $id = $request->query->get('id');
 
