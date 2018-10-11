@@ -11,5 +11,9 @@ Run "php bin/console doctrine:migrations:migrate" for creatr table(s) in DB.
 Run "php bin/console server:start 0.0.0.0:8000" for start application on Your local server.
 Open route in brouser: http://0.0.0.0:8000/contact
 
-# 
-Changes: add validation, add sending email, add API Client(for getAll and create one), etc.
+# Changes: add validation, add sending email, add API Client(for getAll and create one), etc.
+
+# Some photos from QA testing: Find message by Id 
+<img src="TESTPOST1.png" alt="Test">
+
+# Create new message POST request <img src="TESTPOST2.png" alt="Test">
