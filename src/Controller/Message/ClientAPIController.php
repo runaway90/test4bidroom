@@ -3,6 +3,8 @@
 namespace App\Controller\Message;
 
 use App\Entity\Message;
+use App\Repository\MessageRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,9 +27,10 @@ class ClientAPIController extends AbstractController
      */
     public function createOne(Request $request, ValidatorInterface $validator): Response
     {
-        $dataFromForm = $request->get('data');
-        $email = $dataFromForm['email'];
-        $message = $dataFromForm['message'];
+
+        $email = $request->query->get('email');
+        $message = $request->query->get('message');
+
 
         $entityManager = $this->getDoctrine()->getManager();
         $newContactMessage = new Message();
@@ -50,7 +53,7 @@ class ClientAPIController extends AbstractController
     /**
      * @return Response
      */
-    public function getAll() : Response
+    public function getAll(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Message::class);
         $messages = $repository->findAll();
@@ -63,6 +66,38 @@ class ClientAPIController extends AbstractController
 
         return Response::create($jsonContent, 200);
 
+    }
+
+    public function getByEmail(string $email)
+    {
+        $repository = $this->getDoctrine()
+        ->getRepository(Message::class)
+        ->findByEmailField($email);
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $jsonContent = $serializer->serialize($repository, 'json');
+
+        return Response::create($jsonContent, 200);
+    }
+
+    public function findOneMessageById(Request $request)
+    {
+        $id = $request->query->get('id');
+
+        $repository = $this->getDoctrine()
+            ->getRepository(Message::class)
+            ->findOneMessageById($id);
+
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $jsonContent = $serializer->serialize($repository, 'json');
+
+        return Response::create($jsonContent, 200);
     }
 
 }

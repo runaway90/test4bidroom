@@ -18,6 +18,18 @@ api_get_all_messages:
     controller: App\Controller\Message\ClientAPIController::getAll
     methods:    [GET]
 
+api_get_messages_by_email:
+    path: /api/get_by_email/{email}
+    controller: App\Controller\Message\ClientAPIController::getByEmail
+    methods:    [GET]
+
+
+api_post_one_by_id_message:
+    path: /api/get_by_id/
+    controller: App\Controller\Message\ClientAPIController::findOneMessageById
+    methods:    [POST]
+
+
 api_create_message:
     path: /api/write
     controller: App\Controller\Message\ClientAPIController::createOne
