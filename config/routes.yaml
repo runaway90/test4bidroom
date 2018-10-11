@@ -21,4 +21,4 @@ api_get_all_messages:
 api_create_message:
     path: /api/write
     controller: App\Controller\Message\ClientAPIController::createOne
-    methods:    [GET]
+    methods:    [POST]
