@@ -25,7 +25,7 @@ class ClientAPIController extends AbstractController
      */
     public function createOne(Request $request, ValidatorInterface $validator): Response
     {
-        $dataFromForm = $request->get('form');
+        $dataFromForm = $request->get('data');
         $email = $dataFromForm['email'];
         $message = $dataFromForm['message'];
 
