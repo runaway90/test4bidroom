@@ -15,10 +15,17 @@
 
 <div class="example-wrapper">
 
-Test task for Bidroom.
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+    <h1>Test task for Bidroom.</h1>
+    <h2>Simple form to write in DB</h2>
 
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+    <h2>Form to send email</h2>
+
+        {{ form_start(form_send, {'action': path('send_first_simple_form_variant'), 'method': 'POST'}) }}
+        {{ form_widget(form_send) }}
+        {{ form_end(form_send) }}
 </div>
 {% endblock %}

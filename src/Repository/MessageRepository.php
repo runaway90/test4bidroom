@@ -19,10 +19,9 @@ class MessageRepository extends ServiceEntityRepository
         parent::__construct($registry, Message::class);
     }
 
-//    /**
-//     * @return Message[] Returns an array of Message objects
-//     */
-    /*
+    /**
+     * @return Message[] Returns an array of Message objects
+     */
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('m')
@@ -34,9 +33,8 @@ class MessageRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
 
-    /*
+
     public function findOneBySomeField($value): ?Message
     {
         return $this->createQueryBuilder('m')
@@ -46,5 +44,13 @@ class MessageRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+
+
+    public function findByEmail($email): array
+    {
+        return $this->findBy([
+            'email' => $email
+        ]);
+    }
+
 }

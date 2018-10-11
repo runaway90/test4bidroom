@@ -1,3 +1,24 @@
-index:
+first_simple_form_variant:
     path: /contact
-    controller: App\Controller\ContactController::index
+    controller: App\Controller\Message\ContactPageController::messageForm
+    methods:    [GET]
+
+write_to_db_at_first_simple_form_variant:
+    path: /contact
+    controller: App\Controller\Message\ContactPageController::writeMessageToDB
+    methods:    [POST]
+
+send_first_simple_form_variant:
+    path: /send
+    controller: App\Controller\Message\ContactPageController::sendMessageFromForm
+    methods:    [POST]
+
+api_get_all_messages:
+    path: /api/get_all
+    controller: App\Controller\Message\ClientAPIController::getAll
+    methods:    [GET]
+
+api_create_message:
+    path: /api/write
+    controller: App\Controller\Message\ClientAPIController::createOne
+    methods:    [GET]
