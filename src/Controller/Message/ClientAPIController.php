@@ -27,10 +27,8 @@ class ClientAPIController extends AbstractController
      */
     public function createOne(Request $request, ValidatorInterface $validator): Response
     {
-
         $email = $request->query->get('email');
         $message = $request->query->get('message');
-
 
         $entityManager = $this->getDoctrine()->getManager();
         $newContactMessage = new Message();

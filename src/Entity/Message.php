@@ -25,6 +25,7 @@ class Message
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
      * )
+     * @Assert\NotBlank()
      */
     private $email;
 
@@ -36,6 +37,7 @@ class Message
      *      minMessage = "Your first name must be at least {{ limit }} characters long",
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
      * )
+     *  @Assert\NotBlank()
      */
     private $message;
 
